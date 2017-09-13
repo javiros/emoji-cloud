@@ -14,7 +14,44 @@ var EmojiCloud = (function() {
     }
 
     function build(selector, options) {
-      $(selector).text(options.title);
+      var emojiData = transformData(options.data)
+      buildEmojicloud(selector, emojiData);
+    }
+
+    function transformData(options) {
+      var transformedData = []
+      options.forEach(function(k) {
+        transformedData.push({ text: 'xx', weight: k.count, html: { title: k.unicode }, name: k.name });
+      });
+      return transformedData;
+    }
+
+    function buildEmojicloud(selector, emojiData){
+      // emojiSpinner.show();
+      $(selector).css({'visibility': 'hidden', 'height': '600'});
+      $(selector).jQCloud(emojiData, {
+        afterCloudRender: emojiBinder(selector),
+        fontSize: {
+          from: 0.2,
+          to: 0.05
+        }
+      });
+    }
+
+    function emojiBinder(selector) {
+      setTimeout(function() {
+        var spans = $(selector).children('span');
+        // emojiSpinner.hide();
+        $(selector).css('visibility', 'visible');
+        insertEmojis(spans);
+      }, 3000);
+    }
+
+    function insertEmojis(spans) {
+      $.each(spans, function(i, sp) {
+        var emojicode = '&#x' + $(sp).attr('title');
+        $(sp).html(emojicode);
+      });
     }
 
 
