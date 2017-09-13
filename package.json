@@ -21,7 +21,6 @@
   },
   "homepage": "https://github.com/javiros/emoji-cloud#readme",
   "dependencies": {
-    "jQuery": "^1.7.4",
     "jqcloud": "github:javiros/jqcloud"
   }
 }
