@@ -1,0 +1,27 @@
+{
+  "name": "emoji-cloud",
+  "version": "0.1.0",
+  "description": "An emojicloud builder to create beautiful emojiclouds 😀",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/javiros/emoji-cloud.git"
+  },
+  "keywords": [
+    "emojis",
+    "emojicloud"
+  ],
+  "author": "Javier Rossetti <javierrossetti12@gmail.com> (https://github.com/javiros/emoji-cloud)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/javiros/emoji-cloud/issues"
+  },
+  "homepage": "https://github.com/javiros/emoji-cloud#readme",
+  "dependencies": {
+    "jQuery": "^1.7.4",
+    "jqcloud": "github:javiros/jqcloud"
+  }
+}
