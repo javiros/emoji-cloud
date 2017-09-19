@@ -26,14 +26,18 @@ var EmojiCloud = (function() {
       return transformedData;
     }
 
+    function cssSettings(selector, css) {
+      $(selector).css(css);
+    }
+
     function buildEmojicloud(selector, emojiData){
       // emojiSpinner.show();
-      $(selector).css({'visibility': 'hidden', 'height': '600'});
+      cssSettings(selector, {'visibility': 'hidden', 'height': '600', 'width': '600'})
       $(selector).jQCloud(emojiData, {
         afterCloudRender: emojiBinder(selector),
         fontSize: {
-          from: 0.2,
-          to: 0.05
+          from: 1,
+          to: 0.5
         }
       });
     }
@@ -44,7 +48,7 @@ var EmojiCloud = (function() {
         // emojiSpinner.hide();
         $(selector).css('visibility', 'visible');
         insertEmojis(spans);
-      }, 3000);
+      }, 1500);
     }
 
     function insertEmojis(spans) {
