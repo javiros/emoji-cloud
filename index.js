@@ -8,7 +8,7 @@
 /* Highcharts wrapper / helper */
 
 
-var EmojiCloud = (function() {
+EmojiCloud = (function() {
     return {
         build: build
     }
