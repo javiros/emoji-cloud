@@ -21,9 +21,14 @@
   },
   "homepage": "https://github.com/javiros/emoji-cloud#readme",
   "dependencies": {
-    "jqcloud": "github:javiros/jqcloud"
+    "jqcloud": "github:javiros/jqcloud",
+    "jquery": "^3.2.1"
   },
   "devDependencies": {
-    "jasmine": "^2.8.0"
+    "jasmine": "^2.8.0",
+    "jasmine-core": "^2.8.0",
+    "karma": "^1.7.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.0"
   }
 }

@@ -1,14 +1,6 @@
 'use strict';
 
-/**
- * generates an emoji cloud based on array of data
- * @param {[data]} Array of data
- * @return {element}
- */
-/* Highcharts wrapper / helper */
-
-
-EmojiCloud = (function() {
+var EmojiCloud = (function() {
     return {
         build: build
     }
