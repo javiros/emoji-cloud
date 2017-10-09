@@ -1,6 +1,8 @@
 'use strict';
 
-var EmojiCloud = (function() {
+import * as jQuery from 'jquery';
+
+export default EmojiCloud = function() {
     return {
         build: build
     }
@@ -25,7 +27,7 @@ var EmojiCloud = (function() {
     function buildEmojicloud(selector, emojiData){
       // emojiSpinner.show();
       cssSettings(selector, {'visibility': 'hidden', 'height': '600', 'width': '600'})
-      $(selector).jQCloud(emojiData, {
+      jQuery(selector).jQCloud(emojiData, {
         afterCloudRender: emojiBinder(selector),
         fontSize: {
           from: 1,
@@ -38,17 +40,19 @@ var EmojiCloud = (function() {
       setTimeout(function() {
         var spans = $(selector).children('span');
         // emojiSpinner.hide();
-        $(selector).css('visibility', 'visible');
+        jQuery(selector).css('visibility', 'visible');
         insertEmojis(spans);
       }, 1500);
     }
 
     function insertEmojis(spans) {
-      $.each(spans, function(i, sp) {
-        var emojicode = '&#x' + $(sp).attr('title');
-        $(sp).html(emojicode);
+      jQuery.each(spans, function(i, sp) {
+        var emojicode = '&#x' + jQuery(sp).attr('title');
+        jQuery(sp).html(emojicode);
       });
     }
 
 
-}(jQuery));
+};
+// (jQuery));
+// console.log('%c EmojiCloud: ', 'background-color:red; color:white;', EmojiCloud);
