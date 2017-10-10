@@ -5,7 +5,7 @@ const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 const path = require('path');
 var env = process.env.WEBPACK_ENV;
 
-var libraryName = 'emojicloud';
+var libraryName = 'EmojiCloud';
 
 var plugins = [], outputFile;
 
@@ -20,12 +20,15 @@ plugins.push(
   new webpack.ProvidePlugin({
     $: "jquery",
     jQuery: "jquery",
-    "window.jQuery": "jquery"
+    "window.jQuery": path.resolve(__dirname, "jquery/dist/jquery"),
+    jQCloud: path.resolve(__dirname, "jqcloud/jqcloud/jqcloud-1.0.4")
   })
 )
 
 var config = {
-  entry: __dirname + '/src/index.js',
+  entry: [
+    __dirname + '/src/index.js'
+  ],
   devtool: 'source-map',
   output: {
     path: __dirname + '/dist',

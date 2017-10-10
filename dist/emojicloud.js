@@ -2,11 +2,11 @@
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
 	else if(typeof define === 'function' && define.amd)
-		define("emojicloud", [], factory);
+		define("EmojiCloud", [], factory);
 	else if(typeof exports === 'object')
-		exports["emojicloud"] = factory();
+		exports["EmojiCloud"] = factory();
 	else
-		root["emojicloud"] = factory();
+		root["EmojiCloud"] = factory();
 })(this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -70,11 +70,117 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(1);
+
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); // 'use strict';
+
+var _jquery = __webpack_require__(2);
+
+var jQuery = _interopRequireWildcard(_jquery);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+// import * as jQCloud from 'jqcloud/jqcloud/jqcloud-1.0.4';
+var EmojiCloud = function () {
+  function EmojiCloud() {
+    _classCallCheck(this, EmojiCloud);
+  }
+
+  _createClass(EmojiCloud, [{
+    key: 'build',
+    value: function build(selector, options) {
+      var emojiData = this.transformData(options.data);
+
+      this.buildEmojicloud(selector, emojiData);
+    }
+  }, {
+    key: 'transformData',
+    value: function transformData(options) {
+      var transformedData = [];
+
+      options.forEach(function (k) {
+        transformedData.push({ text: 'xx', weight: k.count, html: { title: k.unicode }, name: k.name });
+      });
+      return transformedData;
+    }
+  }, {
+    key: 'insertEmojis',
+    value: function insertEmojis(spans) {
+      jQuery.each(spans, function (i, sp) {
+        var emojicode = '&#x' + jQuery(sp).attr('title');
+
+        jQuery(sp).html(emojicode);
+      });
+    }
+  }, {
+    key: 'emojiBinder',
+    value: function emojiBinder(selector) {
+      var self = this;
+
+      setTimeout(function () {
+        var spans = jQuery(selector).children('span');
+
+        jQuery(selector).css('visibility', 'visible');
+        self.insertEmojis(spans);
+      }, 1500);
+    }
+  }, {
+    key: 'cssSettings',
+    value: function cssSettings(selector, css) {
+      jQuery(selector).css(css);
+    }
+  }, {
+    key: 'buildEmojicloud',
+    value: function buildEmojicloud(selector, emojiData) {
+      // emojiSpinner.show();
+      var self = this;
+
+      this.cssSettings(selector, { 'visibility': 'hidden', 'height': '600', 'width': '600' });
+      jQuery(selector).jQCloud(emojiData, {
+        afterCloudRender: self.emojiBinder(selector),
+        fontSize: {
+          from: 1,
+          to: 0.5
+        }
+      });
+    }
+    // return {
+    //   build: build
+    // };
+
+  }]);
+
+  return EmojiCloud;
+}();
+
+;
+// (jQuery));
+// console.log('%c EmojiCloud: ', 'background-color:red; color:white;', EmojiCloud);
+// module.exports = EmojiCloud;
+var emojicloud = new EmojiCloud();
+
+// export default emojicloud.default;
+module.exports = emojicloud;
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10333,73 +10439,7 @@ return jQuery;
 } );
 
 
-/***/ }),
-/* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = (EmojiCloud = function () {
-  return {
-    build: build
-  };
-
-  function build(selector, options) {
-    var emojiData = transformData(options.data);
-    buildEmojicloud(selector, emojiData);
-  }
-
-  function transformData(options) {
-    var transformedData = [];
-    options.forEach(function (k) {
-      transformedData.push({ text: 'xx', weight: k.count, html: { title: k.unicode }, name: k.name });
-    });
-    return transformedData;
-  }
-
-  function cssSettings(selector, css) {
-    $(selector).css(css);
-  }
-
-  function buildEmojicloud(selector, emojiData) {
-    // emojiSpinner.show();
-    cssSettings(selector, { 'visibility': 'hidden', 'height': '600', 'width': '600' });
-    __WEBPACK_IMPORTED_MODULE_0_jquery__(selector).jQCloud(emojiData, {
-      afterCloudRender: emojiBinder(selector),
-      fontSize: {
-        from: 1,
-        to: 0.5
-      }
-    });
-  }
-
-  function emojiBinder(selector) {
-    setTimeout(function () {
-      var spans = $(selector).children('span');
-      // emojiSpinner.hide();
-      __WEBPACK_IMPORTED_MODULE_0_jquery__(selector).css('visibility', 'visible');
-      insertEmojis(spans);
-    }, 1500);
-  }
-
-  function insertEmojis(spans) {
-    __WEBPACK_IMPORTED_MODULE_0_jquery__["each"](spans, function (i, sp) {
-      var emojicode = '&#x' + __WEBPACK_IMPORTED_MODULE_0_jquery__(sp).attr('title');
-      __WEBPACK_IMPORTED_MODULE_0_jquery__(sp).html(emojicode);
-    });
-  }
-});
-// (jQuery));
-// console.log('%c EmojiCloud: ', 'background-color:red; color:white;', EmojiCloud);
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
-
 /***/ })
 /******/ ]);
 });
-//# sourceMappingURL=emojicloud.js.map
+//# sourceMappingURL=EmojiCloud.js.map
