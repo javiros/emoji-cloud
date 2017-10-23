@@ -8,20 +8,21 @@ class EmojiCloud {
 
     this.buildEmojicloud(selector, emojiData);
   }
-
+  // returns arra of transformed input data so it can be added to divs as metada-data
   transformData(options) {
     var transformedData = [];
-
     options.forEach(function (k) {
+      // pushes to array necessary data: text: placeholder, weight: will provide the size of emoji,
+      // html: emoji unicode representation, name: in case emoji does not render
       transformedData.push({ text: 'xx', weight: k.count, html: { title: k.unicode }, name: k.name });
     });
     return transformedData;
   }
 
+  // Inserts emojis into spans, prepends unicode identifier &#x
   insertEmojis(spans) {
     jQuery.each(spans, function (i, sp) {
       var emojicode = '&#x' + jQuery(sp).attr('title');
-
       jQuery(sp).html(emojicode);
     });
   }
@@ -54,13 +55,8 @@ class EmojiCloud {
       }
     });
   }
-  // return {
-  //   build: build
-  // };
 };
-// (jQuery));
-// console.log('%c EmojiCloud: ', 'background-color:red; color:white;', EmojiCloud);
-// module.exports = EmojiCloud;
+
 let emojicloud = new EmojiCloud();
 
 // export default emojicloud.default;

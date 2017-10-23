@@ -161,19 +161,13 @@ var EmojiCloud = function () {
         }
       });
     }
-    // return {
-    //   build: build
-    // };
-
   }]);
 
   return EmojiCloud;
 }();
 
 ;
-// (jQuery));
-// console.log('%c EmojiCloud: ', 'background-color:red; color:white;', EmojiCloud);
-// module.exports = EmojiCloud;
+
 var emojicloud = new EmojiCloud();
 
 // export default emojicloud.default;

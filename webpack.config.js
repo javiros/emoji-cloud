@@ -21,7 +21,7 @@ plugins.push(
     $: "jquery",
     jQuery: "jquery",
     "window.jQuery": path.resolve(__dirname, "jquery/dist/jquery"),
-    jQCloud: path.resolve(__dirname, "jqcloud/jqcloud/jqcloud-1.0.4")
+    jQCloud: path.resolve(__dirname, "jqcloud2/dist/jqcloud")
   })
 )
 
