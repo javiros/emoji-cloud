@@ -2,7 +2,7 @@ Emojicloud
 
 A npm module for generating beautiful emojiclouds 😀
 
-[![Travis](https://img.shields.io/travis/javiros/emoji-cloud.svg)]()
+[![Travis](https://img.shields.io/travis/javiros/emoji-cloud.svg)](https://travis-ci.org/javiros/emoji-cloud)
 [![Github All Releases](https://img.shields.io/github/downloads/javiros/emoji-cloud/total.svg)]()
 [![GitHub tag](https://img.shields.io/github/tag/javiros/emoji-cloud.svg)]()
 
