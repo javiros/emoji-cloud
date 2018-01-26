@@ -1,8 +1,7 @@
 $(document).ready(function() {
 
   // {
-  //  title: 'String' optional
-  // data: [{'count': 123, 'unicode': 'U+1F600'}, {'count': 153, 'unicode': 'U+1F605'}
+  // data: [{'count': 123, 'unicode': '1F448'}, {'count': 153, 'unicode': '1F44C'}
   // cssOptions: { height: 'string', width: 'string' } optional
   // }
 
