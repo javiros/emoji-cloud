@@ -1,63 +1,76 @@
 // 'use strict';
+  class EmojiCloud {
+    constructor(selector, options) {
+      this.transformedData = this._transformData(options.data);
+      this.cssOptions = options.cssOptions;
+      this._buildEmojicloud(selector, this.transformedData);
+    }
 
-import * as jQuery from 'jquery';
-// import * as jQCloud from 'jqcloud/jqcloud/jqcloud-1.0.4';
-class EmojiCloud {
-  build(selector, options) {
-    var emojiData = this.transformData(options.data);
+    // returns array of transformed input data so it can be added to divs as metada-data
+    _transformData(data) {
+      let modifiedData = [];
 
-    this.buildEmojicloud(selector, emojiData);
-  }
-  // returns arra of transformed input data so it can be added to divs as metada-data
-  transformData(options) {
-    var transformedData = [];
-    options.forEach(function (k) {
-      // pushes to array necessary data: text: placeholder, weight: will provide the size of emoji,
-      // html: emoji unicode representation, name: in case emoji does not render
-      transformedData.push({ text: 'xx', weight: k.count, html: { title: k.unicode }, name: k.name });
-    });
-    return transformedData;
-  }
+      data.forEach((k) => {
+        // pushes to array necessary data: text: placeholder, weight: will provide the size of emoji,
+        // html: emoji unicode representation, name: in case emoji does not render
+        modifiedData.push({
+          text: 'xx',
+          weight: k.count,
+          html: { title: k.unicode }
+        });
+      });
+      return modifiedData;
+    }
 
-  // Inserts emojis into spans, prepends unicode identifier &#x
-  insertEmojis(spans) {
-    jQuery.each(spans, function (i, sp) {
-      var emojicode = '&#x' + jQuery(sp).attr('title');
-      jQuery(sp).html(emojicode);
-    });
-  }
-
-  emojiBinder(selector) {
-    let self = this;
-
-    setTimeout(function () {
-      var spans = jQuery(selector).children('span');
-
-      jQuery(selector).css('visibility', 'visible');
-      self.insertEmojis(spans);
-    }, 1500);
-  }
-
-  cssSettings(selector, css) {
-    jQuery(selector).css(css);
-  }
-
-  buildEmojicloud(selector, emojiData) {
-    // emojiSpinner.show();
-    let self = this;
-
-    this.cssSettings(selector, {'visibility': 'hidden', 'height': '600', 'width': '600'});
-    jQuery(selector).jQCloud(emojiData, {
-      afterCloudRender: self.emojiBinder(selector),
-      fontSize: {
-        from: 1,
-        to: 0.5
+    // Inserts emojis into spans, prepends unicode identifier &#x
+    _insertEmojis(spans) {
+      for (let span of spans) {
+        let emojicode = '&#x' + $(span).attr('title');
+        $(span).html(emojicode);
       }
-    });
+    }
+
+    _emojiBinder(selector) {
+      setTimeout(() => {
+        let spans = $(selector).children('span');
+        $(selector).css('visibility', 'visible');
+        this._insertEmojis(spans);
+      }, 1500);
+    }
+
+    _cssOptinon() {
+      let cssObj = {
+        'visibility': 'hidden',
+        'height': '600',
+        'width': '600'
+      }
+
+      if (this.cssOptions) { cssObj['height'] = this.cssOptions.height, cssObj['width'] = this.cssOptions.width }
+      return cssObj;
+    }
+
+    _cssSettings(selector, css) {
+      $(selector).css(css);
+    }
+
+    _buildEmojicloud(selector, emojiData) {
+      // emojiSpinner.show();
+      let self = this;
+
+      this._cssSettings(selector, this._cssOptinon());
+      $(selector).jQCloud(emojiData, {
+        afterCloudRender: self._emojiBinder(selector),
+        fontSize: {
+          from: 0.1,
+          to: 0.05
+        }
+      });
+    }
   }
-};
 
-let emojicloud = new EmojiCloud();
-
-// export default emojicloud.default;
-module.exports = emojicloud;
+$(function(){
+  const Factory = (selector, options) => {
+    return new EmojiCloud(selector, options);
+  }
+  window.EmojiCloud = Factory;
+});

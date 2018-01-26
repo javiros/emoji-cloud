@@ -1,8 +1,12 @@
-jQuery(document).ready(function() {
+$(document).ready(function() {
 
-  console.log('EmojiCloud: ', EmojiCloud);
-  // { data: [{'count': 123, 'unicode': 'U+1F600'}, {'count': 153, 'unicode': 'U+1F605'} }
-  EmojiCloud.build('#emoji-cloud', {
+  // {
+  //  title: 'String' optional
+  // data: [{'count': 123, 'unicode': 'U+1F600'}, {'count': 153, 'unicode': 'U+1F605'}
+  // cssOptions: { height: 'string', width: 'string' } optional
+  // }
+
+  EmojiCloud('#emoji-cloud', {
     title: 'Sample title',
     data: [
       {
@@ -78,6 +82,8 @@ jQuery(document).ready(function() {
         "name": "white_check_mark",
         "count": 16
       }
-    ]}
+    ],
+    cssOptions: { height: '900', width: '900' }
+  }
   )
 });

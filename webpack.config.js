@@ -1,62 +1,31 @@
-// webpack.config.js
-require('jquery');
-const webpack = require('webpack');
-const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
+// node core dependencies
 const path = require('path');
-var env = process.env.WEBPACK_ENV;
+const fs = require('fs');
 
-var libraryName = 'EmojiCloud';
+// node dependencies
+const webpack = require('webpack');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-var plugins = [], outputFile;
-
-if (env === 'build') {
-  plugins.push(new UglifyJsPlugin({ minimize: true }));
-  outputFile = libraryName + '.min.js';
-} else {
-  outputFile = libraryName + '.js';
+let options = {
+  entry: './src/index.js',
+  target: 'web',
+  output: {
+    path: path.join(__dirname + '/', 'dist'),
+    filename: 'emojicloud.js'
+  },
+  plugins: [
+    // new UglifyJsPlugin(),
+    new CopyWebpackPlugin([
+      { from: './node_modules/jqcloud2/dist/jqcloud.min.js', to: 'jqcloud.min.js' }])
+  ],
+  // externals: nodeModules()
 }
 
-plugins.push(
-  new webpack.ProvidePlugin({
-    $: "jquery",
-    jQuery: "jquery",
-    "window.jQuery": path.resolve(__dirname, "jquery/dist/jquery"),
-    jQCloud: path.resolve(__dirname, "jqcloud2/dist/jqcloud")
-  })
-)
+function nodeModules() {
+  let nodeModulesList = {};
+  fs.readdirSync('node_modules').filter(x => ['.bin'].indexOf(x) === -1).forEach(mod => nodeModulesList[mod] = 'commonjs ' + mod);
+  return nodeModulesList;
+}
 
-var config = {
-  entry: [
-    __dirname + '/src/index.js'
-  ],
-  devtool: 'source-map',
-  output: {
-    path: __dirname + '/dist',
-    filename: outputFile,
-    library: libraryName,
-    libraryTarget: 'umd',
-    umdNamedDefine: true
-  },
-  module: {
-    loaders: [
-      {
-        test: /(\.jsx|\.js)$/,
-        loader: 'babel-loader',
-        exclude: /(node_modules|bower_components)/
-      },
-      {
-        test: /(\.jsx|\.js)$/,
-        loader: 'eslint-loader',
-        exclude: /node_modules/
-      }
-    ]
-  },
-  resolve: {
-    // root: path.resolve('./src'),
-    modules: [path.resolve('./node_modules'), path.resolve('./src')],
-    extensions: ['.json', '.js']
-  },
-  plugins: plugins
-};
-
-module.exports = config;
+module.exports = options;
