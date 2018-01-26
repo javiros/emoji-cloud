@@ -2,12 +2,14 @@ Emojicloud
 
 A npm module for generating beautiful emojiclouds 😀
 
+[![Travis](https://img.shields.io/travis/javiros/emoji-cloud.svg)]()
+
 ## Prerequisites
 * node > 8.5
 
 ## Instalation
 
-npm intall Emojicloud
+`npm intall Emojicloud`
 
 ## Usage
 
