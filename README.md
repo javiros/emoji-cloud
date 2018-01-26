@@ -5,13 +5,20 @@ A npm module for generating beautiful emojiclouds 😀
 ## Prerequisites
 * node > 8.5
 
+## Instalation
+
+npm intall Emojicloud
+
 ## Usage
 
 Call EmojiCloud() with the following arguments:
 
-- selector, where you want your emojicloud to be rendered `'#emoji-cloud'`
+** Parameters:
 
-* Parameters:
+- selector, where you want your emojicloud to be rendered i.e.: `'#emoji-cloud'`
+
+- data and cssOptions
+
 ```
   {
     data: [
