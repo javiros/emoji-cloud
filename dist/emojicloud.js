@@ -78,7 +78,6 @@
 
     // returns array of transformed input data so it can be added to divs as metada-data
     _transformData(data) {
-      console.log(data);
       let modifiedData = [];
 
       data.forEach((k) => {
@@ -90,7 +89,6 @@
           html: { title: k.unicode }
         });
       });
-      console.log(modifiedData);
       return modifiedData;
     }
 
@@ -110,7 +108,7 @@
       }, 1500);
     }
 
-    _cssOptinon() {
+    _cssOption() {
       let cssObj = {
         'visibility': 'hidden',
         'height': '600',
@@ -129,7 +127,7 @@
       // emojiSpinner.show();
       let self = this;
 
-      this._cssSettings(selector, this._cssOptinon());
+      this._cssSettings(selector, this._cssOption());
       $(selector).jQCloud(emojiData, {
         afterCloudRender: self._emojiBinder(selector),
         fontSize: {

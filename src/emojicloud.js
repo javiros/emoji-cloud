@@ -20,7 +20,6 @@
           html: { title: k.unicode }
         });
       });
-      console.log(modifiedData);
       return modifiedData;
     }
 
@@ -40,7 +39,7 @@
       }, 1500);
     }
 
-    _cssOptinon() {
+    _cssOption() {
       let cssObj = {
         'visibility': 'hidden',
         'height': '600',
@@ -59,7 +58,7 @@
       // emojiSpinner.show();
       let self = this;
 
-      this._cssSettings(selector, this._cssOptinon());
+      this._cssSettings(selector, this._cssOption());
       $(selector).jQCloud(emojiData, {
         afterCloudRender: self._emojiBinder(selector),
         fontSize: {
