@@ -1,5 +1,5 @@
 // Karma configuration
-// Generated on Mon Sep 25 2017 15:27:15 GMT+0100 (IST)
+// Generated on Mon Jan 29 2018 11:59:02 GMT+0000 (GMT)
 
 module.exports = function(config) {
   config.set({
@@ -10,29 +10,24 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine', 'browserify'],
+    frameworks: ['mocha', 'chai'],
 
 
     // list of files / patterns to load in the browser
     files: [
-      './spec/*Spec.js'
+      'node_modules/jquery/dist/jquery.min.js',
+      'node_modules/jqcloud2/dist/jqcloud.min.js',
+      'src/*.js',
+      'test/*.spec.js'
     ],
-
-    plugins: [
-			'karma-jasmine',
-			'karma-chrome-launcher'
-		],
-
 
     // list of files to exclude
     exclude: [
     ],
 
-
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-       'app/tests/*.js': [ 'browserify' ]
     },
 
 
@@ -57,6 +52,8 @@ module.exports = function(config) {
 
     // enable / disable watching file and executing tests whenever any file changes
     autoWatch: true,
+
+    plugins: ['karma-chrome-launcher', 'karma-mocha', 'karma-chai'],
 
 
     // start these browsers

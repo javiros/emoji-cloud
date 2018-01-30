@@ -6,7 +6,6 @@ $(document).ready(function() {
   // }
 
   EmojiCloud('#emoji-cloud', {
-    title: 'Sample title',
     data: [
       {
         "unicode": "26F5",

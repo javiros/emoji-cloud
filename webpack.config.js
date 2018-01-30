@@ -8,7 +8,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 let options = {
-  entry: './src/index.js',
+  entry: './src/emojicloud.js',
   target: 'web',
   output: {
     path: path.join(__dirname + '/', 'dist'),

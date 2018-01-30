@@ -68,6 +68,7 @@
 /***/ (function(module, exports) {
 
 // 'use strict';
+
   class EmojiCloud {
     constructor(selector, options) {
       this.transformedData = this._transformData(options.data);
@@ -77,6 +78,7 @@
 
     // returns array of transformed input data so it can be added to divs as metada-data
     _transformData(data) {
+      console.log(data);
       let modifiedData = [];
 
       data.forEach((k) => {
@@ -88,6 +90,7 @@
           html: { title: k.unicode }
         });
       });
+      console.log(modifiedData);
       return modifiedData;
     }
 
@@ -143,7 +146,7 @@ $(function(){
   }
   window.EmojiCloud = Factory;
 });
-
+// module.exports = EmojiCloud;
 
 /***/ })
 /******/ ]);

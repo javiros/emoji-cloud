@@ -1,4 +1,5 @@
 // 'use strict';
+
   class EmojiCloud {
     constructor(selector, options) {
       this.transformedData = this._transformData(options.data);
@@ -19,6 +20,7 @@
           html: { title: k.unicode }
         });
       });
+      console.log(modifiedData);
       return modifiedData;
     }
 
@@ -74,3 +76,4 @@ $(function(){
   }
   window.EmojiCloud = Factory;
 });
+// module.exports = EmojiCloud;
