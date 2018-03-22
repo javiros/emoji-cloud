@@ -55,5 +55,8 @@
     "webpack": "^3.11.0",
     "webpack-dev-server": "^2.11.2",
     "yargs": "9.0.1"
+  },
+  "scripts": {
+   "test": "./node_modules/.bin/karma start --single-run --browsers PhantomJS"
   }
 }
