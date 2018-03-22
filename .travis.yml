@@ -7,4 +7,3 @@ before_script:
 
 script:
   - npm run build
-  - karma start
