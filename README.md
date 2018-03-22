@@ -7,6 +7,8 @@ A npm module for generating beautiful emojiclouds 😀
 [![Github All Releases](https://img.shields.io/github/downloads/javiros/emoji-cloud/total.svg)]()
 [![GitHub tag](https://img.shields.io/github/tag/javiros/emoji-cloud.svg)]()
 
+![emoji-cloud]()
+
 ## Requirements
 * node > 8.7
 
@@ -52,8 +54,8 @@ cssOptions allows you to adjust the height and width of the canvas where EmojiCl
 
 * If you'd like to contribute to this project get in contact with the author to discuss the change.
 * Create a pull request off `master`
-* Submit your pull request provided you have:
-- agreed new feature with author
-- fully tested your new feature
+* Submit your pull request provided you:
+- have agreed new feature with author
+- have fully tested your new feature and most importantly...
 - are proud of your work
 
