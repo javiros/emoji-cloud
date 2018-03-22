@@ -11,6 +11,8 @@ describe('EmojiCloud', () => {
     beforeEach(() => {
       selector = '#emoji-cloud';
       emojicloud = new EmojiCloud(selector, inputData);
+      let node = document.createElement('DIV');
+      node.setAttribute('id', 'emoji-cloud');
     });
 
     it('exists', function () {
@@ -62,7 +64,7 @@ describe('EmojiCloud', () => {
 
     xit('applies css to selector', () => {
       const element = document.querySelector('#emoji-cloud');
-      expect(element).to.have.style('visibility');
+      expect(element.css('visibility')).to.eq('hidden');
     });
   });
 
