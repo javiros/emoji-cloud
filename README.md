@@ -1,12 +1,13 @@
-Emojicloud
+# Emojicloud
 
+## info
 A npm module for generating beautiful emojiclouds 😀
 
 [![Travis](https://img.shields.io/travis/javiros/emoji-cloud.svg)](https://travis-ci.org/javiros/emoji-cloud)
 [![Github All Releases](https://img.shields.io/github/downloads/javiros/emoji-cloud/total.svg)]()
 [![GitHub tag](https://img.shields.io/github/tag/javiros/emoji-cloud.svg)]()
 
-## Prerequisites
+## Requirements
 * node > 8.7
 
 ## Instalation
@@ -15,7 +16,13 @@ A npm module for generating beautiful emojiclouds 😀
 
 ## Usage
 
-Call EmojiCloud() with the following arguments:
+Place a div with an `id = emoji-cloud` like so:
+
+```
+<div id="emoji-cloud"></div>
+```
+
+Then in your js file call EmojiCloud() with the following:
 
 ** Parameters:
 

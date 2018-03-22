@@ -23,6 +23,18 @@ describe('EmojiCloud', () => {
     });
   });
 
+  describe('#_insertEmojis', () => {
+    it('exists', function () {
+        emojicloud._insertEmojis.should.be.a('function');
+    });
+  });
+
+  describe('#_emojiBinder', () => {
+    it('exists', function () {
+        emojicloud._emojiBinder.should.be.a('function');
+    });
+  });
+
   describe('#_cssOption', () => {
     let defaultCss = { 'visibility': 'hidden', 'height': '600', 'width': '600' };
     let customCss = { 'visibility': 'hidden', 'height': '900', 'width': '750' };
@@ -49,20 +61,8 @@ describe('EmojiCloud', () => {
     });
 
     xit('applies css to selector', () => {
-      console.log($(selector));
-      $(selector).css('visibility').should.eq('hidden');
-    });
-  });
-
-  describe('#_insertEmojis', () => {
-    it('exists', function () {
-        emojicloud._insertEmojis.should.be.a('function');
-    });
-  });
-
-  describe('#_emojiBinder', () => {
-    it('exists', function () {
-        emojicloud._emojiBinder.should.be.a('function');
+      const element = document.querySelector('#emoji-cloud');
+      expect(element).to.have.style('visibility');
     });
   });
 
