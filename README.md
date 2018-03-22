@@ -7,6 +7,7 @@ A npm module for generating beautiful emojiclouds 😀
 [![Github All Releases](https://img.shields.io/github/downloads/javiros/emoji-cloud/total.svg)]()
 [![GitHub tag](https://img.shields.io/github/tag/javiros/emoji-cloud.svg)]()
 [![GitHub tag](https://img.shields.io/github/last-commit/javiros/emoji-cloud/master.svg?label=last%20deployed)]()
+[![License](http://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 ![emoji-cloud](https://github.com/javiros/emoji-cloud/blob/master/emoji-cloud.png)
 
