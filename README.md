@@ -24,7 +24,7 @@ Place a div with an `id = emoji-cloud` like so:
 
 Then in your js file call EmojiCloud() with the following:
 
-** Parameters:
+ Parameters:
 
 - selector, where you want your emojicloud to be rendered i.e.: `'#emoji-cloud'`
 
@@ -47,3 +47,13 @@ Where `data` is an array of objects.
 
 
 cssOptions allows you to adjust the height and width of the canvas where EmojiCloud is rendered. It defaults to: `height: 600px`, `width: 600px`.
+
+## Contributing
+
+* If you'd like to contribute to this project get in contact with the author to discuss the change.
+* Create a pull request off `master`
+* Submit your pull request provided you have:
+- agreed new feature with author
+- fully tested your new feature
+- are proud of your work
+
