@@ -2,6 +2,7 @@
 // Generated on Mon Jan 29 2018 11:59:02 GMT+0000 (GMT)
 
 module.exports = function(config) {
+  path = require('path');
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -38,9 +39,24 @@ module.exports = function(config) {
 
 
     coverageReporter: {
-        type: 'html',
-        includeAllSources: true,
-        dir: 'coverage/'
+        dir: './coverage',
+              reporters: [
+                { type: 'lcov', subdir: '.' },
+                { type: 'text-summary' },
+                { type: function() {
+                          var shieldBadgeReporter = require('istanbul-reporter-shield-badge')
+                          var istanbul = require('istanbul')
+                          istanbul.Report.register(shieldBadgeReporter)
+                          return 'shield-badge'
+                        }(),
+                  subdir: '.',
+                  coverageType: 'statements',
+                  range: [75, 90],
+                  subject: 'Code Coverage', 
+                  readmeFilename: 'README.md',
+                  readmeDir: path.resolve(__dirname, '') // i.e. if karma.conf.js is located in test/unit from the root folder of your project
+                }
+              ]
     },
 
     // web server port
