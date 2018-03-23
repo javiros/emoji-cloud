@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "start:dev": "webpack-dev-server",
-    "test": "./node_modules/.bin/karma start --single-run"
+    "test": "istanbul cover ./node_modules/.bin/karma start --single-run"
   },
   "repository": {
     "type": "git",
