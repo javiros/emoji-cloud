@@ -25,17 +25,23 @@ module.exports = function(config) {
     exclude: [
     ],
 
-    // preprocess matching files before serving them to the browser
-    // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: {
-    },
-
-
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['progress', 'coverage'],
 
+    // preprocess matching files before serving them to the browser
+    // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
+    preprocessors: {
+        'test/*.spec.js': ['coverage']
+    },
+
+
+    coverageReporter: {
+        type: 'html',
+        includeAllSources: true,
+        dir: 'coverage/'
+    },
 
     // web server port
     port: 9876,
@@ -53,7 +59,7 @@ module.exports = function(config) {
     // enable / disable watching file and executing tests whenever any file changes
     autoWatch: true,
 
-    plugins: ['karma-chrome-launcher', 'karma-mocha', 'karma-chai', 'chai-style'],
+    plugins: ['karma-chrome-launcher', 'karma-mocha', 'karma-chai', 'karma-coverage'],
 
 
     // start these browsers

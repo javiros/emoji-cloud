@@ -61,11 +61,6 @@ describe('EmojiCloud', () => {
     it('exists', function () {
         emojicloud._cssSettings.should.be.a('function');
     });
-
-    xit('applies css to selector', () => {
-      const element = document.querySelector('#emoji-cloud');
-      expect(element.css('visibility')).to.eq('hidden');
-    });
   });
 
   describe('#_buildEmojicloud', () => {
