@@ -1,10 +1,10 @@
 
 # Emojicloud
 
-## info
+## Info
 A npm module for generating beautiful emojiclouds 😀
 
-## project health
+## Project health
 
 [![Travis](https://img.shields.io/travis/javiros/emoji-cloud.svg)](https://travis-ci.org/javiros/emoji-cloud)
 [![Github All Releases](https://img.shields.io/github/downloads/javiros/emoji-cloud/total.svg)]()
@@ -20,7 +20,7 @@ A npm module for generating beautiful emojiclouds 😀
 
 ## Instalation
 
-`npm intall Emojicloud`
+`npm install Emojicloud`
 
 ## Usage
 
