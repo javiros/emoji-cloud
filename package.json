@@ -1,5 +1,5 @@
 {
-  "name": "emoji-cloud",
+  "name": "emojicloud",
   "version": "1.0.1",
   "description": "An emojicloud builder to create beautiful emojiclouds 😀",
   "main": "index.js",
