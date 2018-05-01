@@ -7,7 +7,7 @@ A npm module for generating beautiful emojiclouds 😀
 ## Project health
 
 [![Travis](https://img.shields.io/travis/javiros/emoji-cloud.svg)](https://travis-ci.org/javiros/emoji-cloud)
-[![npm](https://img.shields.io/npm/dw/localeval.svg)](https://www.npmjs.com/package/javiros-emoji-cloud)
+[![npm](https://img.shields.io/npm/dw/javiros-emoji-cloud.svg)](https://www.npmjs.com/package/javiros-emoji-cloud)
 [![GitHub tag](https://img.shields.io/github/tag/javiros/emoji-cloud.svg)]()
 [![GitHub tag](https://img.shields.io/github/last-commit/javiros/emoji-cloud/master.svg?label=last%20deployed)]()
 ![Code Coverage-shield-badge-1](https://img.shields.io/badge/Code%20Coverage-100%25-brightgreen.svg)
