@@ -24,6 +24,16 @@ A npm module for generating beautiful emojiclouds 😀
 
 ## Usage
 
+* Add the following scripts in your html:
+
+```
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" 
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+  <script src="./../../dist/jqcloud.min.js"></script>
+  <script src="./../../dist/emojicloud.js"></script>
+```
+
 Place a div with an `id = emoji-cloud` like so:
 
 ```

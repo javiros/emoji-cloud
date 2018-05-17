@@ -65,22 +65,35 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 // 'use strict';
 
-  class EmojiCloud {
-    constructor(selector, options) {
-      this.transformedData = this._transformData(options.data);
-      this.cssOptions = options.cssOptions;
-      this._buildEmojicloud(selector, this.transformedData);
-    }
+var EmojiCloud = function () {
+  function EmojiCloud(selector, options) {
+    _classCallCheck(this, EmojiCloud);
 
-    // returns array of transformed input data so it can be added to divs as metada-data
-    _transformData(data) {
-      let modifiedData = [];
+    this.transformedData = this._transformData(options.data);
+    this.cssOptions = options.cssOptions;
+    this._buildEmojicloud(selector, this.transformedData);
+  }
 
-      data.forEach((k) => {
+  // returns array of transformed input data so it can be added to divs as metada-data
+
+
+  _createClass(EmojiCloud, [{
+    key: '_transformData',
+    value: function _transformData(data) {
+      var modifiedData = [];
+
+      data.forEach(function (k) {
         // pushes to array necessary data: text: placeholder, weight: will provide the size of emoji,
         // html: emoji unicode representation, name: in case emoji does not render
         modifiedData.push({
@@ -93,39 +106,71 @@
     }
 
     // Inserts emojis into spans, prepends unicode identifier &#x
-    _insertEmojis(spans) {
-      for (let span of spans) {
-        let emojicode = '&#x' + $(span).attr('title');
-        $(span).html(emojicode);
+
+  }, {
+    key: '_insertEmojis',
+    value: function _insertEmojis(spans) {
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = spans[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var span = _step.value;
+
+          var emojicode = '&#x' + $(span).attr('title');
+          $(span).html(emojicode);
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
       }
     }
+  }, {
+    key: '_emojiBinder',
+    value: function _emojiBinder(selector) {
+      var _this = this;
 
-    _emojiBinder(selector) {
-      setTimeout(() => {
-        let spans = $(selector).children('span');
+      setTimeout(function () {
+        var spans = $(selector).children('span');
         $(selector).css('visibility', 'visible');
-        this._insertEmojis(spans);
+        _this._insertEmojis(spans);
       }, 1500);
     }
-
-    _cssOption() {
-      let cssObj = {
+  }, {
+    key: '_cssOption',
+    value: function _cssOption() {
+      var cssObj = {
         'visibility': 'hidden',
         'height': '600',
         'width': '600'
-      }
+      };
 
-      if (this.cssOptions) { cssObj['height'] = this.cssOptions.height, cssObj['width'] = this.cssOptions.width }
+      if (this.cssOptions) {
+        cssObj['height'] = this.cssOptions.height, cssObj['width'] = this.cssOptions.width;
+      }
       return cssObj;
     }
-
-    _cssSettings(selector, css) {
+  }, {
+    key: '_cssSettings',
+    value: function _cssSettings(selector, css) {
       $(selector).css(css);
     }
-
-    _buildEmojicloud(selector, emojiData) {
+  }, {
+    key: '_buildEmojicloud',
+    value: function _buildEmojicloud(selector, emojiData) {
       // emojiSpinner.show();
-      let self = this;
+      var self = this;
 
       this._cssSettings(selector, this._cssOption());
       $(selector).jQCloud(emojiData, {
@@ -136,12 +181,15 @@
         }
       });
     }
-  }
+  }]);
 
-$(function(){
-  const Factory = (selector, options) => {
+  return EmojiCloud;
+}();
+
+$(function () {
+  var Factory = function Factory(selector, options) {
     return new EmojiCloud(selector, options);
-  }
+  };
   window.EmojiCloud = Factory;
 });
 // module.exports = EmojiCloud;

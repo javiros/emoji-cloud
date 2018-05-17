@@ -17,9 +17,20 @@ let options = {
   plugins: [
     // new UglifyJsPlugin(),
     new CopyWebpackPlugin([
-      { from: './node_modules/jqcloud2/dist/jqcloud.min.js', to: 'jqcloud.min.js' }])
+      { from: './node_modules/jqcloud/dist/jqcloud.min.js', to: 'jqcloud.min.js' }])
   ],
   // externals: nodeModules()
+  module: {
+   loaders: [
+     {
+       test: /\.js$/,
+       loader: 'babel-loader',
+       query: {
+         presets: ['es2015']
+       }
+     }
+    ]
+  }
 }
 
 function nodeModules() {
