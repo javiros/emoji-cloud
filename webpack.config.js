@@ -17,7 +17,7 @@ let options = {
   plugins: [
     // new UglifyJsPlugin(),
     new CopyWebpackPlugin([
-      { from: './node_modules/jqcloud/dist/jqcloud.min.js', to: 'jqcloud.min.js' }])
+      { from: './node_modules/wordcloud/src/wordcloud2.js', to: 'wordcloud.js' }])
   ],
   // externals: nodeModules()
   module: {
