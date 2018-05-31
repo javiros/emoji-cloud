@@ -45,11 +45,11 @@ describe('EmojiCloud', () => {
         emojicloud._applyCustomCss.should.be.a('function');
     });
 
-    xit('returns default css property object', () => {
+    it('returns default css property object', () => {
       emojicloud._cssOption().should.deep.equal(defaultCss)
     });
 
-    xit('returns custom css property object', () => {
+    it('returns custom css property object', () => {
       emojicloud.cssOptions = { height: '900', width: '750' };
       emojicloud._cssOption().should.deep.equal(customCss)
     });
