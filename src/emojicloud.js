@@ -54,7 +54,7 @@
         let spans = document.getElementById(this.selector).children;
         document.getElementById(this.selector).style.visibility = 'visible';
         this._insertEmojis(spans);
-      }, 300);
+      }, 1200);
     }
 
     _hideInitialElement() {

@@ -1,12 +1,12 @@
 {
   "name": "javiros-emoji-cloud",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "An emojicloud builder to create beautiful emojiclouds 😀",
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "start:dev": "webpack-dev-server",
-    "test": "istanbul cover ./test/emojicloud.spec.js"
+    "test": "karma start"
   },
   "repository": {
     "type": "git",
