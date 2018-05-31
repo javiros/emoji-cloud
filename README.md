@@ -20,11 +20,11 @@ A npm module for generating beautiful emojiclouds 😀
 
 ## Instalation
 
-`npm install Emojicloud`
+`npm install javiros-emoji-cloud`
 
 ## Usage
 
-* Add the following scripts in your html:
+* Add the following scripts to your html:
 
 ```
   <script src="[path-to-your-files]wordcloud.js"></script>
@@ -52,7 +52,7 @@ Then in your js file call EmojiCloud() with the following:
       {'count': 153, 'unicode': '1F44C'},
       ...
       ]
-    cssOptions: { height: 'string', width: 'string' } // optional
+    cssOptions: { height: '700', width: '700' } // optional
   }
 ```
 
@@ -61,14 +61,14 @@ Where `data` is an array of objects.
   - unicode: emoji unicode representation (currently there are some known issues supporting flag unicodes)
 
 
-cssOptions allows you to adjust the height and width of the canvas where EmojiCloud is rendered. It defaults to: `height: 600px`, `width: 600px`.
+cssOptions allows you to adjust the height and width of the canvas where EmojiCloud is rendered. It defaults to: `height: 600`, `width: 600` pixels.
 
 ## Contributing
 
 * If you'd like to contribute to this project get in contact with the author to discuss the change.
 * Create a pull request off `master`
 * Submit your pull request provided you:
-- have agreed new feature with author
+- have agreed the new feature with the author
 - have fully tested your new feature and most importantly...
 - are proud of your work
 
