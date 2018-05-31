@@ -72,3 +72,7 @@ cssOptions allows you to adjust the height and width of the canvas where EmojiCl
 - have fully tested your new feature and most importantly...
 - are proud of your work
 
+## Aknowledgements
+
+Infinite thanks to (Sasha Marrocco)[https://github.com/SashaMarrocco] for all the help!
+
