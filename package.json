@@ -23,11 +23,13 @@
   },
   "homepage": "https://github.com/javiros/emoji-cloud#readme",
   "dependencies": {
+    "@webpack-cli/init": "^0.3.0",
     "babel": "^6.23.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
     "babel-preset-es2015": "^6.24.1",
     "diff": ">=3.5.0",
+    "webpack-cli": "^3.3.10",
     "wordcloud": "^1.1.0"
   },
   "devDependencies": {
