@@ -21,7 +21,7 @@ let options = {
   ],
   // externals: nodeModules()
   module: {
-   loaders: [
+   rules: [
      {
        test: /\.js$/,
        loader: 'babel-loader',
