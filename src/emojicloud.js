@@ -1,88 +1,130 @@
 // 'use strict';
 
-  class EmojiCloud {
-    constructor(selector, options) {
-      this.selector = selector.replace('#', '');
-      this.transformedData = this._transformData(options.data);
-      this._applyCustomCss(options.cssOptions);
-      this._buildEmojicloud(this.transformedData);
+class EmojiCloud {
+  constructor(selector, options = {}) {
+    this.selector = (selector || '').replace('#', '');
+    this.options = options;
+    this.transformedData = this._transformData(options.data || []);
+    this._applyCustomCss(options.cssOptions);
+    this._buildEmojicloud(this.transformedData);
+  }
+
+  _transformData(data = []) {
+    return data.map((item) => [item.unicode, item.count]);
+  }
+
+  _cssOption(customCss) {
+    const defaultCss = {
+      visibility: 'hidden',
+      height: '600',
+      width: '600'
+    };
+
+    if (!customCss) {
+      return defaultCss;
     }
 
-    // returns array of transformed input data so it can be added to divs as metada-data
-    _transformData(data) {
-      let modifiedData = [];
+    return {
+      visibility: 'hidden',
+      height: String(customCss.height),
+      width: String(customCss.width)
+    };
+  }
 
-      data.forEach((k) => {
-        // pushes to array necessary data: text: placeholder, weight: will provide the size of emoji,
-        // html: emoji unicode representation, name: in case emoji does not render
-        modifiedData.push([
-          k.unicode, k.count
-        ]);
-      });
-      return modifiedData;
+  _setCustomCss(element, customCss) {
+    if (!element) {
+      return null;
     }
 
-    _applyCustomCss(cssOptions) {
-      let element = document.getElementById(this.selector);
-      if (cssOptions) {
-        this._setCustomCss(element, cssOptions);
+    return Object.assign(element.style, this._cssOption(customCss));
+  }
+
+  _setDefaultCss(element) {
+    if (!element) {
+      return null;
+    }
+
+    return Object.assign(element.style, this._cssOption());
+  }
+
+  _applyCustomCss(cssOptions) {
+    const element = document.getElementById(this.selector);
+    if (!element) {
+      return null;
+    }
+
+    if (cssOptions) {
+      return this._setCustomCss(element, cssOptions);
+    }
+
+    return this._setDefaultCss(element);
+  }
+
+  _insertEmojis(spans = []) {
+    const unicodePrefix = '&#x';
+
+    for (const span of spans) {
+      if (!span || !span.innerText) {
+        continue;
       }
-      else {
-        this._setDefaultCss(element);
-      }
-    }
-
-    _setCustomCss(element, customCss) {
-      return element.style.height = customCss.height + 'px', element.style.width = customCss.width + 'px'
-    }
-
-    _setDefaultCss(element) {
-      return element.style.height = '600px', element.style.width = '600px'
-    }
-
-    // Inserts emojis into spans, prepends unicode identifier &#x
-    _insertEmojis(spans) {
-      let unicodePrefix = '&#x'
-      for (let span of spans) {
-        let emojicode = unicodePrefix + span.innerText;
-        span.innerHTML = emojicode;
-      }
-    }
-
-    _emojiBinder() {
-      setTimeout(() => {
-        let spans = document.getElementById(this.selector).children;
-        document.getElementById(this.selector).style.visibility = 'visible';
-        this._insertEmojis(spans);
-      }, 1200);
-    }
-
-    _hideInitialElement() {
-      let cssObj = {
-        'visibility': 'hidden'
-      }
-      return cssObj;
-    }
-
-    _applyCssSettings() {
-      let style = this._hideInitialElement();
-      Object.assign(document.getElementById(this.selector).style, style);
-
-      }
-
-    _buildEmojicloud(emojiData) {
-      let self = this;
-
-      this._applyCssSettings();
-      WordCloud(document.getElementById(this.selector), { list: emojiData });
-      document.getElementById(this.selector).addEventListener("wordclouddrawn", self._emojiBinder());
+      span.innerHTML = unicodePrefix + span.innerText + ';';
     }
   }
 
-function init(){
-  const Factory = (selector, options) => {
+  _emojiBinder() {
+    setTimeout(() => {
+      const element = document.getElementById(this.selector);
+      if (!element) {
+        return;
+      }
+
+      const spans = element.children;
+      element.style.visibility = 'visible';
+      this._insertEmojis(spans);
+    }, 1200);
+  }
+
+  _hideInitialElement() {
+    return {
+      visibility: 'hidden'
+    };
+  }
+
+  _cssSettings(customCss) {
+    const element = document.getElementById(this.selector);
+    const css = this._cssOption(customCss);
+
+    if (element) {
+      Object.assign(element.style, css);
+    }
+
+    return css;
+  }
+
+  _applyCssSettings() {
+    return this._cssSettings(this.options.cssOptions);
+  }
+
+  _buildEmojicloud(emojiData) {
+    const target = document.getElementById(this.selector);
+    if (!target) {
+      return;
+    }
+
+    this._applyCssSettings();
+
+    if (typeof WordCloud !== 'undefined') {
+      WordCloud(target, { list: emojiData });
+    }
+
+    target.addEventListener('wordclouddrawn', () => this._emojiBinder());
+  }
+}
+
+function init() {
+  window.EmojiCloud = function(selector, options) {
     return new EmojiCloud(selector, options);
-  }
-  window.EmojiCloud = Factory;
-};
+  };
+}
+
 init();
