@@ -4,7 +4,6 @@ const fs = require('fs');
 
 // node dependencies
 const webpack = require('webpack');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 let options = {
@@ -15,9 +14,9 @@ let options = {
     filename: 'emojicloud.js'
   },
   plugins: [
-    // new UglifyJsPlugin(),
-    new CopyWebpackPlugin([
-      { from: './node_modules/wordcloud/src/wordcloud2.js', to: 'wordcloud.js' }])
+    new CopyWebpackPlugin({
+      patterns: [{ from: './node_modules/wordcloud/src/wordcloud2.js', to: 'wordcloud.js' }]
+    })
   ],
   // externals: nodeModules()
   module: {
@@ -25,8 +24,8 @@ let options = {
      {
        test: /\.js$/,
        loader: 'babel-loader',
-       query: {
-         presets: ['es2015']
+       options: {
+         presets: ['@babel/preset-env']
        }
      }
     ]
